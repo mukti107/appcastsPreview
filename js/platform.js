@@ -20,12 +20,8 @@ OneApp.alert = function(data,template){
 }
 
 var platform="material";
-// var apiBaseUrl="http://192.168.100.5:8000/api";
-var apiBaseUrl="http://oneapp.ezzar.com/api";
-// var notificationServerUrl="http://192.168.100.5:3000";
-var notificationServerUrl="http://oneapp.ezzar.com:3000";
+var apiBaseUrl="https://engine.appcasts.com/api";
 var enableNavBar="YES";
-
 
 //url parameters
 var params={};location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi,function(s,k,v){params[k]=decodeURI(v)})

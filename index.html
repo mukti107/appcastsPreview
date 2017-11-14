@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{pageTitle}}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="js/platform.js"></script>
+    <script type="text/javascript" src="/{{pageName}}.js"></script>
+    <link rel="stylesheet" type="text/css" href="/{{pageName}}.css">
+    <script type="text/javascript">
+        var config;
+        function initPage(){
+            $.ajax({
+                url:apiBaseUrl+"/plugin/config",
+                data:{instanceId:params.instance_id},
+                type:"json",
+                success:function(data){
+                    console.log(data);
+                }
+            });
+        }
+    </script>
+
+</head>
+<body id="body_content">
+<div class="views">
+    <div class="view view-main">
+        <div class="pages">
+            <div class="page" data-page="home">
+                <div id="content" class="page-content">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
