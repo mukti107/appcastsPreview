@@ -3,9 +3,7 @@
 <head>
     <title>{{pageTitle}}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script type="text/javascript" src="js/platform.js"></script>
-    <script type="text/javascript" src="/{{pageName}}.js"></script>
-    <link rel="stylesheet" type="text/css" href="/{{pageName}}.css">
+    <script type="text/javascript" src="/resources/js/platform.js"></script>
     <script type="text/javascript">
         var config;
         function initPage(){
@@ -14,11 +12,16 @@
                 data:{instanceId:params.instance_id},
                 type:"json",
                 success:function(data){
-                    console.log(data);
+                    config=data.config;
+                    $("#styles").html(data.style);
+                    eval(data.javascript);
                 }
             });
         }
     </script>
+    <style id="styles">
+
+    </style>
 
 </head>
 <body id="body_content">
