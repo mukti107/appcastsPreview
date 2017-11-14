@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{pageTitle}}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="/resources/js/platform.js"></script>
+    <script type="text/javascript" src="/{{pageName}}.js"></script>
+    <script type="text/javascript">
+        var config={{configuration}};
+        function initPage(){
+            renderTemplate(config,"#body_content","{{pageName}}",function(){
+                if(typeof onCreate !="undefined")onCreate();
+            });
+        }
+    </script>
+    <link rel="stylesheet" type="text/css" href="/{{pageName}}.css">
+</head>
+<body id="body_content">
+<div class="views">
+    <div class="view view-main">
+        <div class="pages">
+            <div class="page" data-page="home">
+                <div id="content" class="page-content">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
