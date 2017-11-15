@@ -19,8 +19,8 @@ OneApp.alert = function(data,template){
 	});
 }
 
-//var platform="material";
-var platform="ios";
+var platform="material";
+//var platform="ios";
 var apiBaseUrl="https://engine.appcasts.com/api";
 var enableNavBar="YES";
 
