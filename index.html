@@ -7,21 +7,23 @@
     <script type="text/javascript">
         var config;
         function initPage(){
-            $.ajax({
-                url:apiBaseUrl+"/preview/"+params.instanceId,
-                dataType:"json",
-                success:function(data){
-                    console.log(data);
-                    config=data.config;
-                    $("#styles").html(data.style);
-                    eval.call(window, data.script);
-
-                        var html = Mustache.render(data.template,config)
-                        $("#body_content").html(html);
-                        if(typeof onCreate !="undefined")onCreate();
-
-                }
-            });
+            if(params.instanceId){
+                $.ajax({
+                    url:apiBaseUrl+"/preview/"+params.instanceId,
+                    dataType:"json",
+                    success:function(data){
+                        console.log(data);
+                        config=data.config;
+                        $("#styles").html(data.style);
+                        eval.call(window, data.script);
+                            var html = Mustache.render(data.template,config)
+                            $("#body_content").html(html);
+                            if(typeof onCreate !="undefined")onCreate();
+                    }
+                });
+            }else{
+                $("#body_content").html("<h3>Waiting for your inputs!!!</h3><p>Please fill in the configurations form for this page so you will be able to see how the page will look like with the details you have entered.</p>");
+            }
         }
     </script>
     <style id="styles">
