@@ -8,7 +8,7 @@
         var config;
         function initPage(){
             $.ajax({
-                url:apiBaseUrl+"/plugin/"+params.instanceId+"/config",
+                url:apiBaseUrl+"/pluginInstance/"+params.instanceId,
                 type:"json",
                 success:function(data){
                     config=data.config;
