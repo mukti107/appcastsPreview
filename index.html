@@ -11,6 +11,7 @@
                 url:apiBaseUrl+"/pluginInstance/"+params.instanceId,
                 dataType:"json",
                 success:function(data){
+                    console.log(data);
                     config=data.config;
                     $("#styles").html(data.style);
                     eval.call(window, data.script);
