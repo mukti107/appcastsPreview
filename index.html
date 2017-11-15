@@ -15,10 +15,11 @@
                     config=data.config;
                     $("#styles").html(data.style);
                     eval.call(window, data.script);
-                    prepareTemplate(config,data.template,function(html){
+
+                        var html = Mustache.render(data.template,config)
                         $("#body_content").html(html);
                         if(typeof onCreate !="undefined")onCreate();
-                    });
+
                 }
             });
         }
