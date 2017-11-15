@@ -8,13 +8,16 @@
         var config;
         function initPage(){
             $.ajax({
-                url:apiBaseUrl+"/plugin/config",
-                data:{instanceId:params.instance_id},
+                url:apiBaseUrl+"/plugin/"+instance_id+"/config",
                 type:"json",
                 success:function(data){
                     config=data.config;
                     $("#styles").html(data.style);
-                    eval(data.javascript);
+                    eval.call(window, data.script);
+                    prepareTemplate(config,data.template,function(html){
+                        $("#body_content").html(html);
+                        if(typeof onCreate !="undefined")onCreate();
+                    });
                 }
             });
         }
