@@ -9,7 +9,7 @@
         function initPage(){
             $.ajax({
                 url:apiBaseUrl+"/pluginInstance/"+params.instanceId,
-                type:"json",
+                dataType:"json",
                 success:function(data){
                     config=data.config;
                     $("#styles").html(data.style);
