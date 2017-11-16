@@ -1,4 +1,5 @@
 var OneApp={callbacks:{}};
+var appCasts;
 
 OneApp.getValue=function(keys,callback){
 	var params={};
@@ -8,7 +9,7 @@ OneApp.getValue=function(keys,callback){
 	});
 	OneApp.callbacks[params.callback]=callback;
 	command("getValues",params);
-	//con
+
 }
 
 OneApp.alert = function(data,template){
@@ -194,6 +195,10 @@ function tableTOJSON($table,$keys){
 
 $(document).ready(function(){
 
+    appCasts=new Framework7({
+        pushState: true,
+        modalTitle:"App"
+    });
 	if(typeof initPage !="undefined")initPage();
 
 
