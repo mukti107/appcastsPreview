@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{pageTitle}}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="/resources/js/platform.js"></script>
+    <script type="text/javascript">
+        var config;
+        function initPage(){
+            if(params.instanceId){
+                $.ajax({
+                    url:apiBaseUrl+"/preview/"+params.instanceId,
+                    dataType:"json",
+                    success:function(data){
+                        config=data.config;
+                        $("#styles").html(data.style);
+                        eval.call(window, data.script);
+                            var html = Mustache.render(data.template,config)
+                            $("#body_content").html(html);
+                            if(typeof onCreate !="undefined")onCreate();
+                    }
+                });
+            }else{
+                $("#body_content").html("<div style='position:absolute; top:50%; transform:translateY(-50%)'><h3>All the links doesn't work in simulation mode properly.</h3><p>You wont see this page on actual device.</p></div>");
+            }
+        }
+    </script>
+    <style id="styles">
+
+    </style>
+
+</head>
+<body id="body_content">
+<div class="views">
+    <div class="view view-main">
+        <div class="pages">
+            <div class="page" data-page="home">
+                <div id="content" class="page-content">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
